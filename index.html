@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wijaya Education Consultant</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --primary:#0d47a1;
+  --secondary:#1976d2;
+  --accent:#ff9800;
+  --dark:#0b1a2f;
+  --light:#f8fafc;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Poppins', sans-serif;
+  background:var(--light);
+  color:#1a1a1a;
+  line-height:1.6;
+}
+
+/* CONTAINER */
+.container{
+  width:90%;
+  max-width:1200px;
+  margin:auto;
+}
+
+/* NAVBAR */
+.navbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:15px 5%;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(12px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:999;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo{
+  font-size:18px;
+  font-weight:700;
+  color:var(--primary);
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#333;
+  font-weight:500;
+}
+
+.cta{
+  background:var(--accent);
+  color:white !important;
+  padding:10px 18px;
+  border-radius:25px;
+}
+
+.menu-toggle{
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  background:
+    linear-gradient(to right, rgba(13,71,161,0.85), rgba(25,118,210,0.85)),
+    url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f') center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  padding:120px 20px 60px;
+}
+
+.hero h1{
+  font-size:48px;
+  max-width:800px;
+  margin:auto;
+}
+
+.hero p{
+  margin-top:15px;
+  font-size:18px;
+  opacity:0.95;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:25px;
+  padding:14px 28px;
+  background:linear-gradient(45deg,#ff9800,#ff5722);
+  border-radius:50px;
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* SECTION */
+.section{
+  padding:80px 5%;
+}
+
+.section h2{
+  text-align:center;
+  font-size:32px;
+  margin-bottom:40px;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+.card,
+.price-box{
+  background:white;
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.05);
+  transition:0.3s;
+}
+
+.card:hover,
+.price-box:hover{
+  transform:translateY(-5px);
+}
+
+.value{
+  background:#eef5ff;
+}
+
+.pricing{
+  background:var(--dark);
+  color:white;
+}
+
+.price{
+  font-size:32px;
+  color:var(--primary);
+  margin:15px 0;
+}
+
+/* FAQ */
+.faq-item{
+  margin-bottom:15px;
+  border-bottom:1px solid #ddd;
+  padding-bottom:10px;
+  cursor:pointer;
+}
+
+.answer{
+  display:none;
+  margin-top:10px;
+  font-size:14px;
+}
+
+/* CTA SECTION */
+.cta-section{
+  text-align:center;
+  background:linear-gradient(to right,var(--primary),var(--secondary));
+  color:white;
+}
+
+/* FLOAT WA */
+.wa{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#25D366;
+  color:white;
+  padding:14px 18px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:600;
+  z-index:999;
+}
+
+/* FOOTER */
+.footer{
+  background:var(--dark);
+  color:white;
+  text-align:center;
+  padding:30px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .nav-links{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:white;
+    flex-direction:column;
+    align-items:center;
+    padding:20px 0;
+    display:none;
+    box-shadow:0 10px 20px rgba(0,0,0,0.08);
+  }
+
+  .nav-links.active{
+    display:flex;
+  }
+
+  .hero h1{
+    font-size:32px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .section h2{
+    font-size:26px;
+  }
+
+  .nav-links .cta{
+    width:80%;
+    text-align:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="logo">Wijaya Education</div>
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#">Program</a>
+    <a href="#">Harga</a>
+    <a href="#">Testimoni</a>
+    <a href="#" class="cta">Daftar</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>Kuliah ke Timur Tengah Tanpa Bingung</h1>
+    <p>Dari nol sampai berangkat dengan bimbingan mentor berpengalaman</p>
+    <a href="#" class="btn">Mulai Sekarang</a>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="section">
+  <h2>Kamu Tidak Sendiri</h2>
+  <div class="grid">
+    <div class="card">Bingung mulai belajar bahasa Arab</div>
+    <div class="card">Takut gagal seleksi</div>
+    <div class="card">Tidak tahu jalur beasiswa</div>
+    <div class="card">Tidak punya mentor</div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="section value">
+  <h2>Kami Punya Sistemnya</h2>
+  <div class="grid">
+    <div class="card">Step by step dari nol</div>
+    <div class="card">Mentor alumni Timur Tengah</div>
+    <div class="card">Simulasi ujian real</div>
+    <div class="card">Bimbingan sampai berangkat</div>
+  </div>
+</section>
+
+<!-- VALUE -->
+<section class="section">
+  <h2>Total Value Program</h2>
+  <div class="grid">
+    <div class="card">Kelas Bahasa Arab — Rp3.000.000</div>
+    <div class="card">Bimbingan Beasiswa — Rp2.500.000</div>
+    <div class="card">Tryout — Rp1.500.000</div>
+    <div class="card">Konsultasi — Rp2.000.000</div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section pricing">
+  <h2>Pilih Program Kamu</h2>
+  <div class="grid">
+    <div class="price-box">
+      <h3>Kelas Online</h3>
+      <div class="price">Rp299.000</div>
+      <a href="#" class="btn">Ambil</a>
+    </div>
+
+    <div class="price-box">
+      <h3>Kelas Offline</h3>
+      <div class="price">Rp950.000</div>
+      <a href="#" class="btn">Ambil</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONI -->
+<section class="section">
+  <h2>Testimoni Alumni</h2>
+  <div class="grid">
+    <div class="card">"Saya diterima di Mesir!"</div>
+    <div class="card">"Program ini sangat membantu"</div>
+    <div class="card">"Mentornya luar biasa"</div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <h2>FAQ</h2>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    Bisa dari nol?
+    <div class="answer">Ya, program ini dirancang dari dasar.</div>
+  </div>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    Apakah dijamin lolos?
+    <div class="answer">Kami bantu maksimal dengan sistem terbaik.</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta-section">
+  <h2>Siap Berangkat ke Timur Tengah?</h2>
+  <p>Kuota terbatas setiap batch. Pastikan kamu tidak tertinggal.</p>
+  <a href="https://wa.me/6285790962447" class="btn">Daftar via WhatsApp</a>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>© 2026 Wijaya Education Consultant</p>
+</div>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/6285790962447" class="wa">WhatsApp</a>
+
+<script>
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("active");
+}
+
+function toggleFaq(el){
+  const ans = el.querySelector('.answer');
+  ans.style.display = ans.style.display === 'block' ? 'none' : 'block';
+}
+</script>
+
+</body>
+</html>
